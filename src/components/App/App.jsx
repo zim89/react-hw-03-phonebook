@@ -17,15 +17,16 @@ const INIT_VALUES = [
 
 export class App extends Component {
   state = {
-    contacts: [],
+    contacts: INIT_VALUES,
     filter: '',
   };
 
   componentDidMount() {
     const savedState = JSON.parse(localStorage.getItem(LS_KEY));
+    console.log(savedState);
 
     !savedState
-      ? localStorage.setItem(LS_KEY, JSON.stringify(INIT_VALUES))
+      ? localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts))
       : this.setState({ contacts: [...savedState] });
   }
 
